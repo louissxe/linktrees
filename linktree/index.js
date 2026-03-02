@@ -23,13 +23,13 @@ const profileData = {
     },
     {
       id: "4",
-      title: "Keyboard Rexus",
+      title: "Keyboard yang Mimin pakai",
       url: "https://shopee.co.id/rexusid/26434899366",
       image: "icon/keyboard.png",
     },
     {
       id: "5",
-      title: "Mouse Rexus",
+      title: "Mouse yang Mimin pakai",
       url: "https://shopee.co.id/rexusid/21537163852",
       image: "icon/mouse.png",
     },
