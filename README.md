@@ -1,9 +1,6 @@
 <div align="center">
   <img src="https://github.com/louissxe/Main/blob/main/dino.gif?raw=true"/>
 </div>
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=500&color=00FFAA&center=true&vCenter=true&random=false&width=435&lines=Frontend+Dev;Problem+Solver;Clean+UI;Production+For+U" alt="Typing SVG" />
-</p>
 
 <div align="center">
   
