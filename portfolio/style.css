@@ -50,7 +50,6 @@ body {
   display: none;
 }
 
-/* Header Styles - Floating Card with Glass Effect */
 header {
   background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
   backdrop-filter: blur(20px) saturate(180%);
@@ -172,7 +171,6 @@ header:hover {
   cursor: pointer;
 }
 
-/* Main Content */
 main {
   max-width: 680px;
   margin: 0 auto;
@@ -181,7 +179,6 @@ main {
   z-index: 1;
 }
 
-/* Hero Section */
 .hero {
   text-align: center;
   padding: 120px 0;
@@ -194,7 +191,6 @@ main {
   margin-bottom: 16px;
 }
 
-/* Gradient Text for Hero */
 .gradient-text {
   font-weight: 900;
   background: linear-gradient(135deg, #8700c5, #ffffff, #6800bd);
@@ -230,7 +226,6 @@ main {
   font-size: 1rem;
 }
 
-/* Buttons */
 .btn-group {
   display: flex;
   flex-direction: column;
@@ -277,7 +272,6 @@ main {
   transform: translateY(-2px);
 }
 
-/* Section Headers */
 .section-header {
   text-align: center;
   margin-bottom: 40px;
@@ -288,7 +282,6 @@ main {
   margin-bottom: 8px;
 }
 
-/* About Section */
 #about {
   padding: 100px 0;
   scroll-margin-top: 80px;
@@ -338,7 +331,6 @@ main {
   font-size: 0.95rem;
 }
 
-/* Skills List - Horizontal Scroll */
 .skills-list {
   display: flex;
   flex-wrap: wrap;
@@ -402,7 +394,6 @@ main {
   font-weight: 500;
 }
 
-/* Contact Section */
 #contact {
   padding: 100px 0;
   scroll-margin-top: 80px;
@@ -474,7 +465,6 @@ main {
   transform: scale(1.1);
 }
 
-/* Contact Icon Image */
 .contact-icon-img {
   width: 48px;
   height: 48px;
@@ -511,7 +501,6 @@ main {
   opacity: 0.7;
 }
 
-/* Footer */
 footer {
   text-align: center;
   padding: 20px 20px;
@@ -564,7 +553,6 @@ footer {
   margin: 0;
 }
 
-/* Footer Content - Professional Layout */
 .footer-content {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -628,7 +616,6 @@ footer {
   border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Footer Social Image */
 .footer-social-img {
   width: 24px;
   height: 24px;
@@ -640,7 +627,6 @@ footer {
   transform: scale(1.2);
 }
 
-/* Back to Top */
 .back-to-top {
   position: fixed;
   bottom: 24px;
@@ -674,7 +660,6 @@ footer {
   box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
-/* Loading */
 .loading {
   position: fixed;
   top: 0;
@@ -708,7 +693,6 @@ footer {
   100% { transform: rotate(360deg); }
 }
 
-/* Canvas */
 #hero-canvas {
   position: fixed;
   top: 0;
@@ -719,7 +703,6 @@ footer {
   pointer-events: none;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -733,13 +716,11 @@ footer {
   border-radius: 4px;
 }
 
-/* Selection */
 ::selection {
   background: rgba(99, 102, 241, 0.4);
   color: #ffffff;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   header {
     width: 95%;
