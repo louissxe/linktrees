@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Louissxe</title>
+    <script src="tailwind.js"></script>
+    <script src="lucide.js"></script>
+
+    <link rel="stylesheet" href="inter.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@^19.2.4",
+          "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+          "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+          "react/": "https://esm.sh/react@^19.2.4/",
+          "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="bg-gradient"></div>
+    <div class="fog" id="fog">
+      <div class="fog-layer"></div>
+      <div class="fog-layer"></div>
+      <div class="fog-layer"></div>
+    </div>
+    <main>
+      <header class="profile">
+        <img
+          id="avatar"
+          src="louissxe.jpg"
+          class="profile-avatar"
+          alt="Profile"
+        />
+        <h1 id="profile-name" class="profile-name">
+          Louis <span class="gradient-text">.Dev</span>
+        </h1>
+        <p id="profile-handle" class="profile-handle">
+          @louissxe.ux
+        </p>
+      </header>
+      <section id="links-container">
+      </section>
+      <div class="social-links">
+        <a href="https://discord.gg/example" target="_blank" class="social-link" title="Discord">
+          <img src="instagram.png" alt="Instagram" />
+        </a>
+        <a href="https://discord.gg/eeJA5Z3W" target="_blank" class="social-link" title="Server">
+          <img src="community.png" alt="Server" />
+        </a>
+        <a href="https://www.tiktok.com/@lshub.official" target="_blank" class="social-link" title="Music">
+          <img src="tiktok1.png" alt="Tiktok" />
+        </a>
+        <a href="https://github.com/louissxe" target="_blank" class="social-link" title="GitHub">
+          <img src="github.png" alt="GitHub" />
+        </a>
+      </div>
+      <footer class="footer">
+        <p class="footer-text">Hello World</p>
+      </footer>
+    </main>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
