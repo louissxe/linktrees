@@ -82,15 +82,17 @@ body {
     100% { background-position: center top; }
 }
 
-.bg-gradient {
-    position: fixed;
-    inset: 0;
-    background:
-        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url('image/background.WEBP') no-repeat center center fixed;
-    background-size: cover;
-    z-index: -2;
-    animation: floatBg 60s ease-in-out infinite;
+.bg-gradient { 
+    position: fixed; 
+    inset: 0; 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), /* overlay gelap */ 
+    url('image/background.WEBP') no-repeat center center fixed, /* gambar latar */ 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.15), transparent), 
+    radial-gradient(ellipse 60% 40% at 100% 50%, rgba(168, 85, 247, 0.1), transparent), 
+    radial-gradient(ellipse 60% 40% at 0% 80%, rgba(59, 130, 246, 0.08), transparent); 
+    background-size: cover; 
+    background-position: center; 
+    z-index: -2; 
 }
 
 #hero-canvas {
