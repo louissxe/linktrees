@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxvS Hub Community | Trusted Roblox Script Community</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="author" content="LuxvS Community">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <div class="bg-gradient"></div>
+    <canvas id="hero-canvas"></canvas>
+
+    <header id="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <img src="image/logo.png" alt="Logo" class="logo-img" />
+                <span class="gradient-text">LUXV`S</span> Hub Community
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#pricing" class="nav-link">How To Purchase</a></li>
+                <li><a href="#showcase" class="nav-link">Showcase</a></li>
+                <li><a href="#about" class="nav-link">About Us</a></li>
+            </ul>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="dashboard" class="hero">
+            <h1>Indonesian Roblox<br>
+                <span class="gradient-text">Community</span><br>
+            </h1>
+            <p class="typewriter" id="typewriter"></p>
+            <p class="hero-description">
+                The best solution for your Roblox game scripting needs.
+                With years of experience and a professional team of developers.
+            </p>
+            
+            <div class="btn-group">
+                <a href="#pricing" class="btn btn-primary">
+                    <i class="fas fa-tag"></i>
+                    See Pricing
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fab fa-discord"></i>
+                    Join Community
+                </a>
+            </div>
+        </section>
+
+
+        <section id="pricing">
+            <div class="section-header">
+                <h2><span class="gradient-text">Pricing</span> & Order</h2>
+                <p>Choose the package that suits your needs</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic Script</h3>
+                        <div class="price">
+                            <span class="currency">Rp</span>
+                            <span class="amount">15,000</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1 Key / Username</li>
+                        <li><i class="fas fa-check"></i> Affordable Price</li>
+                        <li><i class="fas fa-check"></i> Includes All Features</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Username Reset</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Priority Support</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Source Code</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Order Now</a>
+                </div>
+                
+<div class="pricing-card popular">
+    <div class="popular-badge">
+        <i class="fas fa-star" style="color: #FFD700; margin-right: 5px;"></i>
+        Best Value
+    </div>
+    <div class="pricing-header">
+        <h3>Premium Script</h3>
+        <div class="price">
+            <span class="currency">Rp</span>
+            <span class="amount">20,000</span>
+        </div>
+    </div>
+    <ul class="pricing-features">
+        <li><i class="fas fa-check"></i> 1 Key / 3 Devices</li>
+        <li><i class="fas fa-check"></i> 10x HWID Reset</li>
+        <li><i class="fas fa-check"></i> Flexible</li>
+        <li><i class="fas fa-check"></i> Includes All Features</li>
+        <li><i class="fas fa-check"></i> Priority Support</li>
+        <li class="disabled"><i class="fas fa-times"></i> Source Code</li>
+    </ul>
+    <a href="#contact" class="btn btn-primary">Order Now</a>
+</div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Custom Request</h3>
+                        <div class="price">
+                            <span class="currency">Rp</span>
+                            <span class="amount">250,000</span>
+                            <span class="period">/500 Lines</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Script as requested</li>
+                        <li><i class="fas fa-check"></i> 3 Revisions</li>
+                        <li><i class="fas fa-check"></i> Lifetime Support</li>
+                        <li><i class="fas fa-check"></i> Source Code</li>
+                        <li><i class="fas fa-check"></i> Custom Design</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Order Now</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Source Code</h3>
+                        <div class="price">
+                            <span class="currency">Rp</span>
+                            <span class="amount">700,000</span>
+                            <span class="period">/1000 Lines</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Full Source Code</li>
+                        <li><i class="fas fa-check"></i> Unlimited Edits</li>
+                        <li><i class="fas fa-check"></i> Resale Rights</li>
+                        <li><i class="fas fa-check"></i> Documentation</li>
+                        <li><i class="fas fa-check"></i> 1x Bonus Update</li>
+                        <li><i class="fas fa-check"></i> 30-Day Support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Order Now</a>
+                </div>
+            </div>
+
+            <div class="extra-services">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-globe"></i>
+                        <h4>Website Development</h4>
+                        <p>Starting from Rp 300,000</p>
+                        <a href="#contact" class="btn btn-sm btn-outline">Ask Us</a>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-gamepad"></i>
+                        <h4>Game Development</h4>
+                        <p>Starting from Rp 500,000</p>
+                        <a href="#contact" class="btn btn-sm btn-outline">Ask Us</a>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-paint-brush"></i>
+                        <h4>UI/UX Design</h4>
+                        <p>Starting from Rp 150,000</p>
+                        <a href="#contact" class="btn btn-sm btn-outline">Ask Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+            <div class="how-to-order">
+                <h3>How to Order</h3>
+                <div class="order-steps">
+                    <div class="order-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Choose Package</h4>
+                            <p>Select the package that fits your needs</p>
+                        </div>
+                    </div>
+                    <div class="order-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Contact Admin</h4>
+                            <p>Via Discord or WhatsApp</p>
+                        </div>
+                    </div>
+                    <div class="order-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Discuss Requirements</h4>
+                            <p>Explain your request details</p>
+                        </div>
+                    </div>
+                    <div class="order-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Payment</h4>
+                            <p>Make payment via available methods</p>
+                        </div>
+                    </div>
+                    <div class="order-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h4>Script Delivered</h4>
+                            <p>Script ready to use!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Custom Script</h3>
+                    <p>Script tailored to your specific game needs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick and on-time work</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Technical assistance whenever you need it</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Trusted</h3>
+                    <p>Safe and reliable transactions</p>
+                </div>
+            </div>
+        <section></section>
+
+        <section id="showcase">
+            <div class="section-header">
+                <h2><span class="gradient-text">Showcase</span></h2>
+                <p>Examples of projects we have worked on</p>
+            </div>
+            
+            <div class="showcase-grid">
+                <div class="showcase-card">
+                    <div class="showcase-image">
+                        <img src="image/a1.gif" alt="Advanced Combat System">
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Advanced Key System</h3>
+                        <p>The light and efficient key system is comfortable to use for the long term.</p>
+                        <div class="showcase-tags">
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Lua</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <div class="showcase-image">
+                        <img src="image/p8.jpg" alt="Advanced Combat System">
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Universal Script</h3>
+                        <p>A versatile script that can be used across different game types and scenarios.</p>
+                        <div class="showcase-tags">
+                            <span class="tag">Lua</span>
+                            <span class="tag">Roblox</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <div class="showcase-image">
+                        <img src="image/p3.jpg" alt="Advanced Combat System">
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Compressed Variables</h3>
+                        <p>Using compressed variables, to lighten your CPU usage.</p>
+                        <div class="showcase-tags">
+                            <span class="tag">Lua</span>
+                            <span class="tag">Roblox</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <div class="showcase-image">
+                        <img src="image/p4.jpg" alt="Advanced Combat System">
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Efficient Code</h3>
+                        <p>Efficient code written to make it easier for clients.</p>
+                        <div class="showcase-tags">
+                            <span class="tag">Lua</span>
+                            <span class="tag">Roblox</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <div class="showcase-image">
+                        <img src="image/p6.jpg" alt="Advanced Combat System">
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Affordable prices</h3>
+                        <p>High-quality scripts at competitive prices.</p>
+                        <div class="showcase-tags">
+                            <span class="tag">Lua</span>
+                            <span class="tag">Roblox</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <div class="showcase-image">
+                        <img src="image/p7.jpg" alt="Advanced Combat System">
+                    </div>
+                    <div class="showcase-content">
+                        <h3>Easy to use</h3>
+                        <p>Intuitive interface and straightforward implementation.</p>
+                        <div class="showcase-tags">
+                            <span class="tag">Lua</span>
+                            <span class="tag">Roblox</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section></section>
+            
+            <div class="testimonials">
+                <h3>Client Testimonials</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="image/p1.jpg" alt="Hazelnut">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Hazelnut</h4>
+                                <span>Premium Member</span>
+                            </div>
+                        </div>
+                        <p>"LS on top! The script I requested was high quality and responsive. Highly recommended!"</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="image/louissxe.jpg" alt="Louissxe">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Louissxe</h4>
+                                <span>Server Owner</span>
+                            </div>
+                        </div>
+                        <p>"Fast delivery and great quality. The admin is also very responsive in helping."</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="image/p2.jpg" alt="BianX">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>BianX</h4>
+                                <span>Content Creator</span>
+                            </div>
+                        </div>
+                        <p>"Have ordered several times, always satisfying. Highly recommended for those needing Roblox scripts!"</p>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-header">
+                <h2><span class="gradient-text">About</span> Us</h2>
+                <p>Get to know our community better</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>About LUXV`S Hub Community</h3>
+                    <p>
+                        LUXV`S Hub Community is a Roblox script developer community established in 2019.
+                        We focus on providing high-quality script services for various types of Roblox games.
+                        With years of experience, we have helped hundreds of clients improve their game quality.
+                    </p>
+                    <p>
+                        We believe that every game deserves the best system.
+                        Therefore, we always strive to give our best to every client.
+                    </p>
+                </div>
+                
+            </div>
+            <div class="team-section">
+                <h3>Our Team</h3>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="image/p10.jpg" alt="Moderator">
+                        </div>
+                        <h4>Nexal</h4>
+                        <span class="team-role">Moderator</span>
+                        <p>Community organizer</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="image/louissxe.jpg" alt="Owner">
+                        </div>
+                        <h4>Louissxe</h4>
+                        <span class="team-role">Founder</span>
+                        <p>Community owner</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="image/p9.jpg" alt="UI Designer">
+                        </div>
+                        <h4>MyowX</h4>
+                        <span class="team-role">Developer</span>
+                        <p>Interface design</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-header">
+                <h2><span class="gradient-text">Contact</span> Us</h2>
+                <p>Have questions? Feel free to reach out to us</p>
+            </div>
+            
+            <div class="contact-links">
+                <a href="https://discord.gg/MMmF797A" target="_blank" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <h3>Discord</h3>
+                    <span class="contact-link">Luxv`S Hub Community</span>
+                    <span class="contact-note">24/7 Online</span>
+                </a>
+                
+                <a href="https://www.tiktok.com/@lshub.official" target="_blank" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>Tiktok</h3>
+                    <span class="contact-link">@lshub.official</span>
+                    <span class="contact-note">Quick reply</span>
+                </a>
+                
+                <a href="https://www.instagram.com/louissxe.ux" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <span class="contact-link">@louissxe.ux</span>
+                    <span class="contact-note">Replies within 24h</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <span class="gradient-text">LUXV`S</span> Hub Community
+                </a>
+                <p class="footer-description">
+                    Trusted Indonesian Roblox script community.
+                    Providing custom script services, website development, and game development.
+                </p>
+            </div>
+            
+            <div class="footer-links-section">
+                <h4>Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#pricing">Pricing & Order</a></li>
+                    <li><a href="#showcase">Showcase</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#pricing">Basic Script</a></li>
+                    <li><a href="#pricing">Premium Script</a></li>
+                    <li><a href="#pricing">Custom Request</a></li>
+                    <li><a href="#pricing">Source Code</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="footer-copyright">
+                &copy; 2026 LUXV`S Hub Community. All rights reserved.
+            </p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
