@@ -214,7 +214,6 @@ if (canvas) {
     });
 }
 
-// Testimonial Slider
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.testimonial-slider');
     const track = document.querySelector('.testimonial-track');
@@ -234,18 +233,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalSlides = slides.length;
     let autoPlayInterval;
     
-    // Determine how many slides to show at once based on screen width
     function getSlidesPerView() {
         if (window.innerWidth <= 768) {
-            return 1; // Mobile: show 1 card
+            return 1; 
         } else if (window.innerWidth <= 992) {
-            return 2; // Tablet: show 2 cards
+            return 2; 
         } else {
-            return 3; // Desktop: show 3 cards
+            return 3; 
         }
     }
     
-    // Calculate total number of slide positions (considering cards per view)
     function getTotalSlidePositions() {
         const slidesPerView = getSlidesPerView();
         return Math.max(1, totalSlides - slidesPerView + 1);
@@ -293,7 +290,6 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(autoPlayInterval);
     }
     
-    // Arrow click handlers
     if (nextBtn) {
         nextBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -312,7 +308,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Dot click handlers
     dots.forEach((dot, index) => {
         dot.addEventListener('click', function(e) {
             e.preventDefault();
@@ -320,11 +315,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Pause on hover
     slider.addEventListener('mouseenter', stopAutoPlay);
     slider.addEventListener('mouseleave', startAutoPlay);
     
-    // Touch/swipe support
     let touchStartX = 0;
     let touchEndX = 0;
     
@@ -345,13 +338,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, { passive: true });
     
-    // Handle resize to adjust slides per view
     let resizeTimeout;
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(function() {
             const slidesPerView = getSlidesPerView();
-            // Reset to first slide position if current position is invalid
             const maxSlide = totalSlides - slidesPerView;
             if (currentSlide > maxSlide) {
                 currentSlide = Math.max(0, maxSlide);
@@ -362,3 +353,4 @@ document.addEventListener('DOMContentLoaded', function() {
     stopAutoPlay();
     startAutoPlay();
 });
+
