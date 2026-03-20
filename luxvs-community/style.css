@@ -1,10 +1,4 @@
-/* ============================================
-   LUXV'S HUB — style.css
-   ============================================ */
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap');
-
-/* ─── Tokens ────────────────────────────────── */
 
 :root {
   --bg:          #0a0a0a;
@@ -28,8 +22,6 @@
   --ease-spring: cubic-bezier(0.34, 1.45, 0.64, 1);
   --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
 }
-
-/* ─── Reset ─────────────────────────────────── */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -61,16 +53,12 @@ button { font-family: var(--font); cursor: pointer; }
 
 :focus-visible { outline: 1.5px solid var(--border-3); outline-offset: 3px; }
 
-/* ─── Gradient text ─────────────────────────── */
-
 .gradient-text {
   background: linear-gradient(135deg, #fff 10%, #666 95%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
-/* ─── Loading ───────────────────────────────── */
 
 .loading {
   position: fixed;
@@ -96,8 +84,6 @@ button { font-family: var(--font); cursor: pointer; }
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ─── Background ────────────────────────────── */
-
 #hero-canvas {
   position: fixed;
   inset: 0;
@@ -115,8 +101,6 @@ button { font-family: var(--font); cursor: pointer; }
     radial-gradient(ellipse 65% 45% at 50% -2%, rgba(255,255,255,0.03) 0%, transparent 60%),
     radial-gradient(ellipse 30% 30% at 88% 88%, rgba(255,255,255,0.012) 0%, transparent 55%);
 }
-
-/* ─── Header ────────────────────────────────── */
 
 #header {
   position: fixed;
@@ -239,9 +223,6 @@ button { font-family: var(--font); cursor: pointer; }
 }
 .menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .menu-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-/* only 2 spans in new HTML, adjust */
-
-/* ─── Buttons ───────────────────────────────── */
 
 .btn {
   display: inline-flex;
@@ -283,8 +264,6 @@ button { font-family: var(--font); cursor: pointer; }
 }
 .btn-ghost:hover { color: var(--ink-2); border-color: var(--border-3); background: rgba(255,255,255,0.03); }
 
-/* ─── Section base ──────────────────────────── */
-
 main { position: relative; z-index: 1; }
 
 .section-label {
@@ -315,8 +294,6 @@ main { position: relative; z-index: 1; }
   color: var(--ink-3);
   line-height: 1.65;
 }
-
-/* ─── Hero ──────────────────────────────────── */
 
 .hero {
   min-height: 100vh;
@@ -413,8 +390,6 @@ main { position: relative; z-index: 1; }
   letter-spacing: 0.01em;
 }
 
-/* Hero visual (code card) */
-
 .hero-visual {
   position: relative;
   display: flex;
@@ -478,8 +453,6 @@ main { position: relative; z-index: 1; }
 .c-yellow { color: #f78c6c; }
 .c-muted  { color: var(--ink-4); }
 
-/* Floating badges */
-
 .hero-badge-float {
   position: absolute;
   display: inline-flex;
@@ -507,8 +480,6 @@ main { position: relative; z-index: 1; }
   right: -5%;
   animation: float 8s ease-in-out infinite 0.5s;
 }
-
-/* ─── Marquee strip ─────────────────────────── */
 
 .marquee-strip {
   position: relative;
@@ -546,8 +517,6 @@ main { position: relative; z-index: 1; }
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-
-/* ─── Pricing ───────────────────────────────── */
 
 .section-pricing {
   max-width: 1160px;
@@ -699,8 +668,6 @@ main { position: relative; z-index: 1; }
   box-shadow: 0 4px 18px rgba(232,232,229,0.13);
 }
 
-/* Extras row */
-
 .extras-row {
   display: flex;
   align-items: center;
@@ -749,8 +716,6 @@ main { position: relative; z-index: 1; }
   font-size: 0.7rem;
   margin-left: 2px;
 }
-
-/* How to order */
 
 .how-to-order {
   border-top: 1px solid var(--border);
@@ -801,8 +766,6 @@ main { position: relative; z-index: 1; }
   color: var(--ink-3);
   line-height: 1.5;
 }
-
-/* ─── Showcase ──────────────────────────────── */
 
 .section-showcase {
   max-width: 1160px;
@@ -909,8 +872,6 @@ main { position: relative; z-index: 1; }
   color: var(--ink-3);
   line-height: 1.55;
 }
-
-/* ─── Testimonials ──────────────────────────── */
 
 .section-testimonials {
   max-width: 1160px;
@@ -1053,8 +1014,6 @@ main { position: relative; z-index: 1; }
   width: 16px;
 }
 
-/* ─── About ─────────────────────────────────── */
-
 .section-about {
   max-width: 1160px;
   margin: 0 auto;
@@ -1169,8 +1128,6 @@ main { position: relative; z-index: 1; }
   line-height: 1.5;
 }
 
-/* ─── Contact ───────────────────────────────── */
-
 .section-contact {
   max-width: 1160px;
   margin: 0 auto;
@@ -1272,8 +1229,6 @@ main { position: relative; z-index: 1; }
   transform: translate(2px, -2px);
 }
 
-/* ─── Footer ────────────────────────────────── */
-
 footer {
   border-top: 1px solid var(--border);
   position: relative;
@@ -1372,8 +1327,6 @@ footer {
 
 .footer-socials a:hover { color: var(--ink-3); transform: translateY(-2px); }
 
-/* ─── Back to top ───────────────────────────── */
-
 .back-to-top {
   position: fixed;
   bottom: 1.5rem;
@@ -1404,16 +1357,12 @@ footer {
 .back-to-top:hover   { background: var(--bg-2); color: var(--ink); transform: translateY(-2px) scale(1.06); }
 .back-to-top:active  { transform: scale(0.94); }
 
-/* ─── Reveal ────────────────────────────────── */
-
 .reveal {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.55s var(--ease-expo), transform 0.55s var(--ease-expo);
 }
 .reveal.visible { opacity: 1; transform: none; }
-
-/* ─── Responsive ────────────────────────────── */
 
 @media (max-width: 1024px) {
   .pricing-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1475,8 +1424,6 @@ footer {
   .hto-steps { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
 }
-
-/* ─── Reduced motion ────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
