@@ -1,15 +1,9 @@
-/* ============================================
-   LUXV'S HUB — script.js
-   ============================================ */
-
 'use strict';
 
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 const lerp = (a, b, t) => a + (b - a) * t;
 const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
-
-/* ─── Loading ───────────────────────────────── */
 
 (function () {
   const el = $('#loading');
@@ -21,8 +15,6 @@ const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
   };
   document.readyState === 'complete' ? setTimeout(hide, 280) : window.addEventListener('load', () => setTimeout(hide, 280));
 })();
-
-/* ─── Hero entrance ─────────────────────────── */
 
 (function () {
   const items = [
@@ -49,8 +41,6 @@ const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
   });
 })();
 
-/* ─── Header scroll ─────────────────────────── */
-
 (function () {
   const h = $('#header');
   if (!h) return;
@@ -64,8 +54,6 @@ const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
     t = true;
   }, { passive: true });
 })();
-
-/* ─── Active nav ────────────────────────────── */
 
 (function () {
   const links = $$('.nav-link');
@@ -86,8 +74,6 @@ const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
     }, { rootMargin: '-40% 0px -55% 0px' }).observe(s)
   ) : null;
 })();
-
-/* ─── Mobile menu ───────────────────────────── */
 
 (function () {
   const toggle = $('#menuToggle');
@@ -110,8 +96,6 @@ const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
   });
 })();
 
-/* ─── Smooth scroll ─────────────────────────── */
-
 $$('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
@@ -120,8 +104,6 @@ $$('a[href^="#"]').forEach(a => {
     window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
   });
 });
-
-/* ─── Scroll reveal ─────────────────────────── */
 
 (function () {
   const targets = $$(
@@ -155,8 +137,6 @@ $$('a[href^="#"]').forEach(a => {
   targets.forEach(el => obs.observe(el));
 })();
 
-/* ─── Testimonial slider ────────────────────── */
-
 (function () {
   const track   = $('.testimonial-track');
   const slides  = $$('.testimonial-slide');
@@ -185,7 +165,6 @@ $$('a[href^="#"]').forEach(a => {
   wrapper?.addEventListener('mouseenter', () => clearInterval(timer));
   wrapper?.addEventListener('mouseleave', autoplay);
 
-  // drag
   track.addEventListener('mousedown',  e => { dragging = true; sx = e.clientX; dx = 0; });
   track.addEventListener('touchstart', e => { sx = e.touches[0].clientX; dx = 0; }, { passive: true });
 
@@ -213,8 +192,6 @@ $$('a[href^="#"]').forEach(a => {
   autoplay();
 })();
 
-/* ─── Back to top ───────────────────────────── */
-
 (function () {
   const btn = $('#backToTop');
   if (!btn) return;
@@ -229,8 +206,6 @@ $$('a[href^="#"]').forEach(a => {
   }, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 })();
-
-/* ─── Canvas particle field ─────────────────── */
 
 (function () {
   const canvas = $('#hero-canvas');
@@ -308,8 +283,6 @@ $$('a[href^="#"]').forEach(a => {
   init(); draw();
 })();
 
-/* ─── Magnetic buttons ──────────────────────── */
-
 (function () {
   if (window.matchMedia('(hover: none)').matches) return;
 
@@ -325,8 +298,6 @@ $$('a[href^="#"]').forEach(a => {
     btn.addEventListener('mouseleave', () => { btn.style.transform = ''; b = null; });
   });
 })();
-
-/* ─── Card tilt ─────────────────────────────── */
 
 (function () {
   if (window.matchMedia('(hover: none)').matches) return;
@@ -350,8 +321,6 @@ $$('a[href^="#"]').forEach(a => {
     });
   });
 })();
-
-/* ─── Cursor glow ───────────────────────────── */
 
 (function () {
   if (window.matchMedia('(hover: none)').matches) return;
@@ -383,8 +352,6 @@ $$('a[href^="#"]').forEach(a => {
     requestAnimationFrame(move);
   })();
 })();
-
-/* ─── Marquee pause on hover ────────────────── */
 
 (function () {
   const track = $('.marquee-track');
