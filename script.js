@@ -3,9 +3,6 @@
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
-/* ============================================================
-   THEME TOGGLE (dark / light)
-   ============================================================ */
 (function () {
   const root = document.documentElement;
   const saved = localStorage.getItem('luxvs-theme');
@@ -33,7 +30,6 @@ const $$ = (s, c = document) => [...c.querySelectorAll(s)];
       theme = theme === 'dark' ? 'light' : 'dark';
       localStorage.setItem('luxvs-theme', theme);
       apply(theme);
-      // jelly effect on toggle
       btn.style.animation = 'none';
       btn.style.transform = 'scale(0.88)';
       setTimeout(() => { btn.style.transform = ''; }, 120);
@@ -170,7 +166,7 @@ const rand = (min, max) => Math.random() * (max - min) + min;
     const x = rand(0, W), y = rand(0, H);
     return {
       type:  SHAPES[Math.floor(rand(0, SHAPES.length))],
-      ox: x, oy: y,           // home position
+      ox: x, oy: y,
       x, y,
       size:  rand(5, 14),
       alpha: rand(0.04, 0.13),
@@ -398,7 +394,26 @@ const rand = (min, max) => Math.random() * (max - min) + min;
   const toggle = $('#menuToggle'), nav = $('#navLinks');
   if (!toggle || !nav) return;
   let open = false;
-  const set = s => { open=s; nav.classList.toggle('open',open); toggle.classList.toggle('open',open); toggle.setAttribute('aria-expanded',open); };
+
+  const spansHTML = toggle.innerHTML;
+
+  const set = s => {
+    open = s;
+    nav.classList.toggle('open', open);
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+
+    if (open) {
+      toggle.innerHTML = '<i class="fas fa-xmark"></i>';
+    } else {
+      toggle.innerHTML = spansHTML;
+      toggle.style.animation = 'none';
+      void toggle.offsetWidth;
+      toggle.style.animation = 'jelly 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+      toggle.addEventListener('animationend', () => { toggle.style.animation = ''; }, { once: true });
+    }
+  };
+
   toggle.addEventListener('click', () => set(!open));
   $$('a', nav).forEach(a => a.addEventListener('click', () => set(false)));
   document.addEventListener('click', e => { if (open && !$('#header').contains(e.target)) set(false); });
@@ -413,12 +428,7 @@ $$('a[href^="#"]').forEach(a => {
   });
 });
 
-/* ============================================================
-   GSAP + ScrollTrigger — Section & Element Animations
-   ============================================================ */
 (function initGSAP() {
-  /* GSAP might load after DOMContentLoaded since scripts are defer'd.
-     We wait for window load to ensure both GSAP and ScrollTrigger are ready. */
   function setup() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
       setTimeout(setup, 80);
@@ -427,18 +437,13 @@ $$('a[href^="#"]').forEach(a => {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    /* ── overflow guard so horizontal slides don't create scrollbar ── */
     document.body.style.overflowX = 'hidden';
 
-    /* ── helper: group elements by their direct parent for stagger ── */
     function staggerDelay(el, allEls) {
       const siblings = allEls.filter(e => e.parentElement === el.parentElement);
       return clamp(siblings.indexOf(el) * 0.08, 0, 0.5);
     }
 
-    /* ────────────────────────────────────────────────────────────────
-       1. SECTION SLIDE-IN  — alternating left / right
-    ──────────────────────────────────────────────────────────────── */
     $$('section').forEach((section, i) => {
       const fromLeft = i % 2 === 0;
       gsap.fromTo(section,
@@ -465,9 +470,6 @@ $$('a[href^="#"]').forEach(a => {
       );
     });
 
-    /* ────────────────────────────────────────────────────────────────
-       2. CARDS & ITEMS — bounce up with stagger
-    ──────────────────────────────────────────────────────────────── */
     const cardGroups = [
       { sel: '.pricing-card',     x: 0,   y: 36, scale: 0.94 },
       { sel: '.sc-card',          x: 0,   y: 30, scale: 0.96 },
@@ -486,7 +488,6 @@ $$('a[href^="#"]').forEach(a => {
       const els = $$(sel);
       if (!els.length) return;
 
-      /* Group by parent so stagger is per-container */
       const parents = [...new Set(els.map(e => e.parentElement))];
       parents.forEach(parent => {
         const children = els.filter(e => e.parentElement === parent);
@@ -507,9 +508,6 @@ $$('a[href^="#"]').forEach(a => {
       });
     });
 
-    /* ────────────────────────────────────────────────────────────────
-       3. SECTION TITLES — slide in from left with underline
-    ──────────────────────────────────────────────────────────────── */
     $$('.section-title').forEach(title => {
       gsap.fromTo(title,
         { opacity: 0, x: -40 },
@@ -526,9 +524,6 @@ $$('a[href^="#"]').forEach(a => {
       );
     });
 
-    /* ────────────────────────────────────────────────────────────────
-       4. PARALLAX SCRUB — marquee strip moves with scroll
-    ──────────────────────────────────────────────────────────────── */
     const marquee = $('.marquee-strip');
     if (marquee) {
       gsap.to(marquee, {
@@ -543,9 +538,6 @@ $$('a[href^="#"]').forEach(a => {
       });
     }
 
-    /* ────────────────────────────────────────────────────────────────
-       5. HERO VISUAL — subtle parallax on scroll
-    ──────────────────────────────────────────────────────────────── */
     const heroVisual = $('.hero-visual');
     if (heroVisual) {
       gsap.to(heroVisual, {
@@ -560,9 +552,6 @@ $$('a[href^="#"]').forEach(a => {
       });
     }
 
-    /* ────────────────────────────────────────────────────────────────
-       6. ABOUT GRID — left panel from left, right from right
-    ──────────────────────────────────────────────────────────────── */
     const aboutLeft  = $('.about-left');
     const aboutRight = $('.about-right');
     if (aboutLeft && aboutRight) {
@@ -582,11 +571,9 @@ $$('a[href^="#"]').forEach(a => {
       );
     }
 
-    /* Refresh on load for proper position calc */
     window.addEventListener('load', () => ScrollTrigger.refresh());
   }
 
-  /* Start init */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setup);
   } else {
