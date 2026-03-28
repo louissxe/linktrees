@@ -2,6 +2,44 @@
 
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+/* ============================================================
+   THEME TOGGLE (dark / light)
+   ============================================================ */
+(function () {
+  const root = document.documentElement;
+  const saved = localStorage.getItem('luxvs-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let theme = saved || (prefersDark ? 'dark' : 'light');
+
+  const apply = (t) => {
+    root.setAttribute('data-theme', t);
+    const btn = $('#themeToggle');
+    if (!btn) return;
+    const icon = btn.querySelector('i');
+    if (icon) {
+      icon.className = t === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+    btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  };
+
+  apply(theme);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    apply(theme);
+    const btn = $('#themeToggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('luxvs-theme', theme);
+      apply(theme);
+      // jelly effect on toggle
+      btn.style.animation = 'none';
+      btn.style.transform = 'scale(0.88)';
+      setTimeout(() => { btn.style.transform = ''; }, 120);
+    });
+  });
+})();
 const lerp = (a, b, t) => a + (b - a) * t;
 const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
 const rand = (min, max) => Math.random() * (max - min) + min;
@@ -36,32 +74,10 @@ const rand = (min, max) => Math.random() * (max - min) + min;
     }
 
     
-    .section-animate {
-      opacity: 0;
-      transform: translateY(44px) scale(0.977);
-      filter: blur(7px);
-      transition:
-        opacity   0.8s cubic-bezier(0.16,1,0.3,1),
-        transform 0.8s cubic-bezier(0.16,1,0.3,1),
-        filter    0.8s ease;
-    }
-    .section-animate.in-view { opacity:1; transform:none; filter:blur(0); }
-    .section-animate.in-view > * { animation: slide-up-fade 0.62s cubic-bezier(0.16,1,0.3,1) both; }
-    .section-animate.in-view > *:nth-child(1){animation-delay:.05s}
-    .section-animate.in-view > *:nth-child(2){animation-delay:.13s}
-    .section-animate.in-view > *:nth-child(3){animation-delay:.20s}
-    .section-animate.in-view > *:nth-child(4){animation-delay:.27s}
-    .section-animate.in-view > *:nth-child(5){animation-delay:.33s}
+    /* GSAP handles section animation — no CSS class needed */
 
     
-    .bounce-reveal {
-      opacity: 0;
-      transform: translateY(22px) scale(0.96);
-      transition:
-        opacity   0.55s cubic-bezier(0.34,1.56,0.64,1),
-        transform 0.55s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    .bounce-reveal.in { opacity:1; transform:none; }
+    /* element reveal handled by GSAP */
 
     
     #scroll-progress {
@@ -397,41 +413,185 @@ $$('a[href^="#"]').forEach(a => {
   });
 });
 
-(function () {
-  const sections = $$('section');
-  sections.forEach(s => s.classList.add('section-animate'));
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in-view');
-      } else {
-        e.target.classList.remove('in-view');
-      }
-    });
-  }, { threshold: 0.06, rootMargin:'0px 0px -40px 0px' });
-  sections.forEach(s => obs.observe(s));
-})();
+/* ============================================================
+   GSAP + ScrollTrigger — Section & Element Animations
+   ============================================================ */
+(function initGSAP() {
+  /* GSAP might load after DOMContentLoaded since scripts are defer'd.
+     We wait for window load to ensure both GSAP and ScrollTrigger are ready. */
+  function setup() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      setTimeout(setup, 80);
+      return;
+    }
 
-(function () {
-  const targets = $$(
-    '.pricing-card, .sc-card, .extra-pill, .team-member, ' +
-    '.contact-card, .hto-steps li, .tcard, .about-left p, ' +
-    '.about-badges span, .section-label, .hero-stats .stat'
-  );
-  targets.forEach(el => el.classList.add('bounce-reveal'));
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const siblings = entry.target.parentElement
-          ? $$(':scope > *', entry.target.parentElement).filter(el => targets.includes(el)) : [];
-        const delay = clamp(siblings.indexOf(entry.target) * 70, 0, 420);
-        setTimeout(() => entry.target.classList.add('in'), delay);
-      } else {
-        entry.target.classList.remove('in');
-      }
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* ── overflow guard so horizontal slides don't create scrollbar ── */
+    document.body.style.overflowX = 'hidden';
+
+    /* ── helper: group elements by their direct parent for stagger ── */
+    function staggerDelay(el, allEls) {
+      const siblings = allEls.filter(e => e.parentElement === el.parentElement);
+      return clamp(siblings.indexOf(el) * 0.08, 0, 0.5);
+    }
+
+    /* ────────────────────────────────────────────────────────────────
+       1. SECTION SLIDE-IN  — alternating left / right
+    ──────────────────────────────────────────────────────────────── */
+    $$('section').forEach((section, i) => {
+      const fromLeft = i % 2 === 0;
+      gsap.fromTo(section,
+        {
+          opacity: 0,
+          x: fromLeft ? -72 : 72,
+          scale: 0.975,
+          filter: 'blur(8px)',
+        },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          filter: 'blur(0px)',
+          duration: 0.95,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 82%',
+            end: 'top 40%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
     });
-  }, { rootMargin:'0px 0px -40px 0px', threshold:0.06 });
-  targets.forEach(el => obs.observe(el));
+
+    /* ────────────────────────────────────────────────────────────────
+       2. CARDS & ITEMS — bounce up with stagger
+    ──────────────────────────────────────────────────────────────── */
+    const cardGroups = [
+      { sel: '.pricing-card',     x: 0,   y: 36, scale: 0.94 },
+      { sel: '.sc-card',          x: 0,   y: 30, scale: 0.96 },
+      { sel: '.tcard',            x: 0,   y: 28, scale: 0.97 },
+      { sel: '.contact-card',     x: 0,   y: 24, scale: 0.97 },
+      { sel: '.team-member',      x: -32, y: 0,  scale: 1    },
+      { sel: '.hto-steps li',     x: 0,   y: 22, scale: 0.96 },
+      { sel: '.extra-pill',       x: 0,   y: 16, scale: 0.92 },
+      { sel: '.about-badges span',x: -20, y: 0,  scale: 1    },
+      { sel: '.about-left p',     x: 0,   y: 20, scale: 1    },
+      { sel: '.section-label',    x: -18, y: 0,  scale: 1    },
+      { sel: '.hero-stats .stat', x: 0,   y: 18, scale: 0.95 },
+    ];
+
+    cardGroups.forEach(({ sel, x, y, scale }) => {
+      const els = $$(sel);
+      if (!els.length) return;
+
+      /* Group by parent so stagger is per-container */
+      const parents = [...new Set(els.map(e => e.parentElement))];
+      parents.forEach(parent => {
+        const children = els.filter(e => e.parentElement === parent);
+        gsap.fromTo(children,
+          { opacity: 0, x, y, scale },
+          {
+            opacity: 1, x: 0, y: 0, scale: 1,
+            duration: 0.6,
+            ease: 'back.out(1.6)',
+            stagger: 0.08,
+            scrollTrigger: {
+              trigger: parent,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      });
+    });
+
+    /* ────────────────────────────────────────────────────────────────
+       3. SECTION TITLES — slide in from left with underline
+    ──────────────────────────────────────────────────────────────── */
+    $$('.section-title').forEach(title => {
+      gsap.fromTo(title,
+        { opacity: 0, x: -40 },
+        {
+          opacity: 1, x: 0,
+          duration: 0.75,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: title,
+            start: 'top 88%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+    });
+
+    /* ────────────────────────────────────────────────────────────────
+       4. PARALLAX SCRUB — marquee strip moves with scroll
+    ──────────────────────────────────────────────────────────────── */
+    const marquee = $('.marquee-strip');
+    if (marquee) {
+      gsap.to(marquee, {
+        x: -60,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: marquee,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.2,
+        },
+      });
+    }
+
+    /* ────────────────────────────────────────────────────────────────
+       5. HERO VISUAL — subtle parallax on scroll
+    ──────────────────────────────────────────────────────────────── */
+    const heroVisual = $('.hero-visual');
+    if (heroVisual) {
+      gsap.to(heroVisual, {
+        y: 60,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+      });
+    }
+
+    /* ────────────────────────────────────────────────────────────────
+       6. ABOUT GRID — left panel from left, right from right
+    ──────────────────────────────────────────────────────────────── */
+    const aboutLeft  = $('.about-left');
+    const aboutRight = $('.about-right');
+    if (aboutLeft && aboutRight) {
+      gsap.fromTo(aboutLeft,
+        { opacity: 0, x: -50 },
+        {
+          opacity: 1, x: 0, duration: 0.85, ease: 'power3.out',
+          scrollTrigger: { trigger: '.about-grid', start: 'top 78%', toggleActions: 'play none none reverse' },
+        }
+      );
+      gsap.fromTo(aboutRight,
+        { opacity: 0, x: 50 },
+        {
+          opacity: 1, x: 0, duration: 0.85, ease: 'power3.out',
+          scrollTrigger: { trigger: '.about-grid', start: 'top 78%', toggleActions: 'play none none reverse' },
+        }
+      );
+    }
+
+    /* Refresh on load for proper position calc */
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+  }
+
+  /* Start init */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setup);
+  } else {
+    setup();
+  }
 })();
 
 (function () {

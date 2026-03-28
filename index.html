@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <link rel="stylesheet" href="style.css">
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
 
@@ -45,6 +48,10 @@
       <a href="#contact" class="nav-cta">
         <i class="fab fa-discord"></i> Join Us
       </a>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
 
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
         <span></span><span></span>
@@ -649,7 +656,6 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 LUXV'S Community. All rights reserved.</p>
       <div class="footer-socials">
         <a href="https://discord.gg/MMmF797A" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
         <a href="https://www.tiktok.com/@lshub.official" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
